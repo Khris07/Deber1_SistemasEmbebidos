@@ -1,0 +1,57 @@
+# include "matriz.h"
+int Suma_Fila=0;
+int Suma_Columna=0;
+float Total_Suma_Columnas=0;
+float Promedio_Suma_Columnas=0;
+long int Multiplicacion_Columna=1;
+String a;
+String b;
+String c;
+int i;
+int j;
+int k=0;
+void setup() {
+  Serial.begin(9600);  
+}
+
+void loop() {
+  for(;k<=0;k++)
+  {
+    for(j=0;j<20;j++)
+    {
+      for(i=0;i<3;i++)
+      {
+        Suma_Fila=Suma_Fila+matriz[j][i];
+      }
+      a=String("Suma de valores fila "+String(j+1)+" es: "+String(Suma_Fila));
+      Serial.println(a);
+      Suma_Fila=0;
+    }
+    Serial.println(" ");
+
+    for(j=0;j<3;j++)
+    {
+      for(i=0;i<20;i++)
+      {
+        Multiplicacion_Columna=Multiplicacion_Columna*matriz[i][j];    
+      }
+      b=String("Multiplicacion de valores columna "+String(j+1)+" es: "+String(Multiplicacion_Columna));
+      Serial.println(b);
+      Multiplicacion_Columna=1;
+    }
+    Serial.println(" ");
+    
+    for(j=0;j<3;j++)
+    {
+      for(i=0;i<20;i++)
+      {
+        Suma_Columna=Suma_Columna+matriz[i][j];
+      }
+      Total_Suma_Columnas=Total_Suma_Columnas+Suma_Columna;
+      Suma_Columna=0;
+    }
+    Promedio_Suma_Columnas=(Total_Suma_Columnas/3);
+    c=String("El promedio de la suma de las columnas es: "+String(Promedio_Suma_Columnas));
+    Serial.println(c);
+  }
+}
